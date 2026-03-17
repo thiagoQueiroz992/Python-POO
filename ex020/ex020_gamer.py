@@ -12,12 +12,12 @@ class Gamer():
         self.favorites.sort()
     
     def gamer_record(self):
-        record = Panel(f'Nome real: {self.real_name}\nJogos favoritos:')
+        record = Panel(f'Nome real: [bold on blue]{self.real_name}[/]\nJogos favoritos:', title=f'Jogador <{self.nick}>')
         for g in self.favorites:
-            record.renderable += '\n' + g
+            record.renderable += '\n:video_game: ' + f'[blue]{g}[/]'
         print(record)
 
-g1 = Gamer('Thiago Queiroz', 'kert_o.neihl')
+g1 = Gamer('Subaru Natsuki', 'natsuki_subaru291')
 g1.add_favorite('Minecraft')
 g1.add_favorite('Genshin Impact')
 g1.add_favorite('Albion Online')
