@@ -23,7 +23,7 @@ class Book():
         if self.current_page == self.pages:
             print(f':closed_book: [red]Você chegou ao final do livro [bold]\'{self.book_name}\'[/].[/]')
 
-book = Book('Teste', 20)
+book = Book('O Propósito de Evoluir', 20)
 book.advance_pages(2)
 book.advance_pages()
 book.advance_pages(8)
