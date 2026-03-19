@@ -1,6 +1,7 @@
 from rich import print
 from rich.panel import Panel
 from os import system
+from time import sleep
 
 class RemoteControl():
     def __init__(self):
@@ -16,23 +17,27 @@ class RemoteControl():
 
     def power_off(self):
         system('cls')
-        self.tv_panel.renderable = 'TV is off'
+        self.tv_panel.renderable = ':prohibited: [red bold]TV is off. Type @ to power it on.[/]'
         print(self.tv_panel)
         ipt = self.channel_and_volume()
         if ipt == '@':
+            print(':warning: [yellow bold]Turning TV on...[/]')
+            sleep(2)
             self.power_on()
         elif ipt == '0':
             exit()
         else:
-            self.power_off
+            self.power_off()
     
     def power_on(self):
         system('cls')
         volume_control = '[on white][on green]' + ' ' * self.volume + '[/on green]' + ' ' * (5 - self.volume) + '[/]'
-        self.tv_panel.renderable = f'CHANNEL =  1  2  3  4  5 \nVOLUME  = {volume_control}'.replace(f' {self.channel} ', f'[bold on yellow] {self.channel} [/]')
+        self.tv_panel.renderable = f'[blue bold]CHANNEL[/] =  1  2  3  4  5 \n[blue bold]VOLUME[/]  = {volume_control}'.replace(f' {self.channel} ', f'[bold on yellow] {self.channel} [/]')
         print(self.tv_panel)
         ipt = self.channel_and_volume()
         if ipt == '@':
+            print(':warning: [yellow bold]Turning TV off...[/]')
+            sleep(2)
             self.power_off()
         elif ipt == '<':
             self.previous_channel()
