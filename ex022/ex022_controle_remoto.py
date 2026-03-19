@@ -28,7 +28,7 @@ class RemoteControl():
     
     def power_on(self):
         system('cls')
-        volume_control = '[on white]     [/]'
+        volume_control = '[on white][on green]' + ' ' * self.volume + '[/on green]' + ' ' * (5 - self.volume) + '[/]'
         self.tv_panel.renderable = f'CHANNEL =  1  2  3  4  5 \nVOLUME  = {volume_control}'.replace(f' {self.channel} ', f'[bold on yellow] {self.channel} [/]')
         print(self.tv_panel)
         ipt = self.channel_and_volume()
