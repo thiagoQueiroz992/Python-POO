@@ -1,27 +1,34 @@
 from rich import print
 from rich.panel import Panel
+from os import system
 
 class RemoteControl():
     def __init__(self):
         self.channel = 1
         self.volume = 1
-        self.channels = [1, 2, 3, 4, 5]
-        self.tv_panel = Panel('sacrifice your hearts', title='[ TV ]', width=40)
+        self.tv_panel = Panel('sacrifice your hearts', title='[ TV ]', width=50)
         self.input = ''
         self.power_off()
     
     def channel_and_volume(self):
-        self.input = str(input('< CH >   < VOL > ::  '))
+        self.input = str(input(f'< CH{self.channel} >   - VOL{self.volume} + ::  '))
         return self.input
 
     def power_off(self):
+        system('cls')
         self.tv_panel.renderable = 'TV is off'
         print(self.tv_panel)
-        if self.channel_and_volume() == '@':
+        ipt = self.channel_and_volume()
+        if ipt == '@':
             self.power_on()
+        elif ipt == '0':
+            exit()
+        else:
+            self.power_off
     
     def power_on(self):
-        self.tv_panel.renderable = f'CHANNEL: {self.channel}\nVOLUME: {self.volume}'
+        system('cls')
+        self.tv_panel.renderable = f'CHANNEL =  1  2  3  4  5 \nVOLUME  =      '
         print(self.tv_panel)
         ipt = self.channel_and_volume()
         if ipt == '@':
